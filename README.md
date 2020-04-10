@@ -19,17 +19,17 @@ tf-lib-cli -h // 使用帮助
 tf-lib-cli -v // cli工具版本号
 
 // 初始化项目, 尖括号必填, 方括号可选
-tf-lib-cli init <项目名称> [version] [desc] 
+tf-lib-cli init <组件名称> [version] [desc] 
 
 // 示例
-tf-lib-cli init my_app 0.1.0 这是描述
+tf-lib-cli init my_lib 0.1.0 这是描述
 ```
 
 
 ---
 ### 说明
 
-> 1. 如果是直接下载的代码, 请更改package.json文件中的: name, description, main字段内容
+> 1. 如果是github直接下载的代码, 请更改package.json文件中的: name, description, main字段内容
 > 2. 默认node-modules目录下的包都不会打包到最终代码中, 如果配置了config.js whitelist(白名单), 就会打包了
 > 3. 不支持sass, 因为node-sass有几率下载失败
 > 4. 已配置好antd的按需加载, 只需安装antd即可: yarn add antd
