@@ -33,7 +33,7 @@ tf-lib-cli init my_lib 0.1.0 这是描述
 > 2. 默认node-modules目录下的包都不会打包到最终代码中, 如果配置了config.js whitelist(白名单), 就会打包了
 > 3. 不支持sass, 因为node-sass有几率下载失败
 > 4. 已配置好antd的按需加载, 只需安装antd即可: yarn add antd
-
+> 5. 如果项目中安装组件后报错, 类似于: "Cannot find module '@babel/runtime/core-js/object/keys'", 需在项目中安装`npm install @babel/runtime-corejs2`
 
 
 ### 目录和文件说明
