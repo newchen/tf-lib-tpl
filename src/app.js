@@ -1,14 +1,13 @@
-import React, { useRef } from "react";
+import React from "react";
 
 // import { Button } from 'antd'
 
-import { TfXXX } from './component/index.js'
+import TfXXX from './component/index.js'
 import './app.css';
 
 
-export default function App({ name, ...rest }) {
-  console.log(name, rest)
-  
+export default function App() {
+
   return (
     <div>
       <TfXXX />
