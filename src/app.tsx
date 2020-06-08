@@ -2,11 +2,11 @@ import React from "react";
 
 // import { Button } from 'antd'
 
-import TfXXX from './component/index.js'
+import TfXXX from './component/index'
 import './app.css';
 
 
-export default function App() {
+export default () => {
 
   return (
     <div>

@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "esnext", // 指定 ECMAScript 目标版本, 指定为esnext不触发tsc的语法转换
+		"declaration": true, // 生成相应的 '.d.ts' 文件
+    "outDir": "dist", // 指定输出目录, 如果我们不用ts进行语法转化, 该项配置的是.d.ts的输出目录
+    "allowSyntheticDefaultImports": true,  // 允许从没有设置默认导出的模块中默认导入。
+    "jsx": "react",  // 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
+		"moduleResolution": "node", // 选择模块解析策略： 'node' (Node.js) or 'classic' (TypeScript pre-1.6)
+		"allowJs": true, // 允许编译 javascript 文件
+		"baseUrl": "./",
+	},
+	
+	"include": [
+		"./src",
+		"./typings"
+	]
+}

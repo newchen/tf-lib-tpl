@@ -28,7 +28,7 @@ module.exports = {
     mode: isMini ? 'production' : 'development',
 
     entry: {
-        [entryName]: './src/component/index.js'
+        [entryName]: './src/component/index'
     },
 
     devtool: isMini ? '': 'source-map',
@@ -58,7 +58,7 @@ module.exports = {
     module: {
         rules: [
             { 
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
                 use: {  
                     loader: 'babel-loader'
@@ -69,7 +69,7 @@ module.exports = {
                 include: path.join(__dirname, 'src'), 
                 use: [
                     MiniCssExtractPlugin.loader,
-                    config.cssModules ?  { loader: 'css-loader', options: { modules: true } }: 'css-loader',
+                    'css-loader',
                     'postcss-loader'
                 ]
             },
@@ -87,7 +87,17 @@ module.exports = {
                 include: path.join(__dirname, 'src'), 
                 use: [
                     MiniCssExtractPlugin.loader,
-                    config.cssModules ?  { loader: 'css-loader', options: { modules: true } }: 'css-loader',
+
+                    config.cssModules 
+                        ?  { 
+                            loader: 'css-loader', 
+                            options: { 
+                                modules: true,
+                                localIdentName: '[name]__[local]--[hash:base64:5]' 
+                            } 
+                        }
+                        : 'css-loader',
+
                     'postcss-loader',
                     'less-loader'
                 ]
@@ -133,6 +143,10 @@ module.exports = {
                 ]
             }
         ]
+    },
+
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
 
     plugins: [

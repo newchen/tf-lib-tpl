@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
-import styles from './index.less'
+import styles from './index.less';
 
-export default class TfXXX extends Component {
+interface IProps {
+  // todo
+}
+
+interface IState {
+  // todo
+}
+
+export default class TfXXX extends Component<IProps, IState> {
   static defaultProps = {
     
   }

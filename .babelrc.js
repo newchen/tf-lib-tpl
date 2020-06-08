@@ -1,7 +1,11 @@
 // https://babeljs.io/docs/en/configuration
 
 module.exports = {
-  presets: ["@babel/preset-env", "@babel/preset-react"],
+  presets: [
+    "@babel/preset-env", 
+    "@babel/preset-react",
+    '@babel/preset-typescript',
+  ],
 
   plugins: [
       ["@babel/plugin-proposal-decorators", { "legacy": true }],
@@ -63,5 +67,3 @@ module.exports = {
 
 // "@babel/plugin-proposal-decorators"
 // -----------------------------------------------
-
-// "@babel/plugin-syntax-dynamic-import"

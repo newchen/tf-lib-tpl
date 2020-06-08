@@ -6,14 +6,14 @@ let path = require('path')
 const config = require('./config')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index',
 
   mode: 'development',
 
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
@@ -24,7 +24,7 @@ module.exports = {
         include: path.join(__dirname, 'src'), //限制范围，提高打包速度
         use: [ // 从 postcss-loader -> css-loader -> style-loader 解析
           'style-loader', 
-          config.cssModules ?  { loader: 'css-loader', options: { modules: true } }: 'css-loader',
+          'css-loader',
           'postcss-loader'
         ] 
       }, {
@@ -40,7 +40,17 @@ module.exports = {
         include: path.join(__dirname, 'src'), 
         use: [
           'style-loader', 
-          config.cssModules ?  { loader: 'css-loader', options: { modules: true } }: 'css-loader',
+
+          config.cssModules 
+            ?  { 
+              loader: 'css-loader', 
+              options: { 
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]' 
+              } 
+            }
+            : 'css-loader',
+
           'postcss-loader', 
           'less-loader'
         ]
@@ -92,6 +102,10 @@ module.exports = {
     // 2. [name]就可以将出口文件名和入口文件名一一对应
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
+  },
+
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
 
   plugins: [
