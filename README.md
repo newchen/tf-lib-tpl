@@ -37,18 +37,20 @@ tf-lib-cli init my_lib 0.1.0 这是描述
 ### 目录和文件说明
 
 - .babelrc.js     &nbsp;&nbsp;---> babel配置文件
+- tsconfig.json  &nbsp;&nbsp;---> typescript配置
+- typings      &nbsp;&nbsp;---> .d.ts声明文件目录
 - .gitignore
 - config.js    &nbsp;&nbsp;---> 自定义的配置文件
 - package.json
 - readme.md    &nbsp;&nbsp;---> 文档说明
 - src
     + app.css  &nbsp;&nbsp;---> 开发时的demo示例
-    + app.js   &nbsp;&nbsp;---> 开发时的demo示例
+    + app.tsx  &nbsp;&nbsp;---> 开发时的demo示例
     + component
         - import  &nbsp;&nbsp;---> 该目录及下面的文件, 是适配babel-plugin-import插件的, 不用更改
             + css.js   
             + index.js
-        - index.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> 这里写组件代码
+        - index.tsx &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> 这里写组件代码
         - index.less &nbsp;&nbsp;---> 组件样式, 支持less变量, 然后使用时可配置变量主题
     + index.html  &nbsp;&nbsp;---> 模板html, 不用更改
     + index.js    &nbsp;&nbsp;---> 模板入口js, 不用更改
