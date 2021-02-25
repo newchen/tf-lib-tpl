@@ -1,6 +1,6 @@
 {
   "name": "tf-lib-tpl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "组件开发模板",
   "main": "./lib/tf-lib-tpl/index.min.js",
   "scripts": {
@@ -54,8 +54,8 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
+    "@types/react": "^16.14.4",
+    "@types/react-dom": "^16.9.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
