@@ -2,26 +2,7 @@
 
 ### 使用
 
-> 提供了一个cli工具, 可以非常方便的初始化
-
-#### 安装
-
-```
-npm install -g tf-lib-cli
-```
-
-#### 使用
-
-```
-tf-lib-cli -h // 使用帮助
-tf-lib-cli -v // cli工具版本号
-
-// 初始化项目, 尖括号必填, 方括号可选
-tf-lib-cli init <组件名称> [version] [desc] 
-
-// 示例
-tf-lib-cli init my_lib 0.1.0 这是描述
-```
+> 提供了一个cli工具, 可以非常方便的初始化, 使用见: https://www.npmjs.com/package/tf-lib-cli
 
 
 ---
