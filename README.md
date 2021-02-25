@@ -1,11 +1,7 @@
 ## 组件开发模板(typescript)
 
-### 使用
-
 > 提供了一个cli工具, 可以非常方便的初始化, 使用见: https://www.npmjs.com/package/tf-lib-cli
 
-
----
 ### 说明
 
 > 1. 如果是github直接下载的代码, 请更改package.json文件中的: name, description, main字段内容
@@ -34,7 +30,7 @@
         - index.tsx &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> 这里写组件代码
         - index.less &nbsp;&nbsp;---> 组件样式, 支持less变量, 然后使用时可配置变量主题
     + index.html  &nbsp;&nbsp;---> 模板html, 不用更改
-    + index.js    &nbsp;&nbsp;---> 模板入口js, 不用更改
+    + index.tsx   &nbsp;&nbsp;---> 模板入口js, 不用更改
 - webpack.config.bundle.js &nbsp;&nbsp;---> webpack配置, 不用更改
 - webpack.config.js  &nbsp;&nbsp;---> webpack配置, 不用更改
 
