@@ -15,8 +15,9 @@ module.exports = {
       // https://babeljs.io/docs/en/babel-runtime-corejs2
       // http://www.cnblogs.com/sea-breeze/p/10490672.html
       ["@babel/plugin-transform-runtime", { "corejs": 2 }],
-      
-      ["import", { "libraryName": "antd", "style": "css"}],
+
+      // style为'css'时引入css文件, 为true时引入less文件, 所以如果在项目中更改了主题样式, 这里style一定要是true
+      ["import", { "libraryName": "antd", "style": true}], 
   ]
 }
 
