@@ -7,7 +7,7 @@
 > 1. 如果是github直接下载的代码, 请更改package.json文件中的: name, description, main字段内容
 > 2. 默认node-modules目录下的包都不会打包到最终代码中, 如果配置了config.js whitelist(白名单), 就会打包了
 > 3. 不支持sass, 因为node-sass有几率下载失败
-> 4. 已配置好antd的按需加载, 只需安装antd即可: npm i antd -D (ps: 请将依赖安装到devDependencies, 因为实际是要用业务中的antd版本, 如果安装到dependencies, 可能会造成版本冲突)
+> 4. 已配置好antd的按需加载, 只需安装antd即可: npm i antd -D (待确认: 请将依赖安装到devDependencies, 因为实际是要用业务中的antd版本, 如果安装到dependencies, 可能会造成版本冲突, ps: 貌似又不会 ???)
 > 5. 如果项目中安装组件后报错, 类似于: "Cannot find module '@babel/runtime/core-js/object/keys'", 需在项目中安装`npm install @babel/runtime-corejs2`
 
 
