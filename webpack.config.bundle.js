@@ -11,9 +11,9 @@ const nodeExternals = require('webpack-node-externals');
 
 // 驼峰转换
 function camel2Dash(str) {
-    return str.replace(/\-(\w)/g, function(m, $1) {
-        return $1.toUpperCase()
-    })
+  return str.replace(/\-(\w)/g, function(m, $1) {
+    return $1.toUpperCase()
+  })
 }
 const moduleName = require('./package.json').name
 const camelComponentName = camel2Dash(moduleName)
@@ -25,155 +25,168 @@ let isMini = process.env.npm_lifecycle_event == 'mini' ? true : false;
 let entryName = isMini ? `${name}.min` : `${name}`;
 
 module.exports = {
-    mode: isMini ? 'production' : 'development',
+  mode: isMini ? 'production' : 'development',
 
-    entry: {
-        [entryName]: './src/component/index'
-    },
+  entry: {
+    [entryName]: './src/component/index'
+  },
 
-    devtool: isMini ? '': 'source-map',
+  devtool: isMini ? '': 'source-map',
 
-    output: {
-        path: path.resolve(__dirname, `lib/${moduleName}`),
-        filename: '[name].js',
-        library: libraryName,
-        libraryTarget: 'umd'
-    },
+  output: {
+    path: path.resolve(__dirname, `lib/${moduleName}`),
+    filename: '[name].js',
+    library: libraryName,
+    libraryTarget: 'umd'
+  },
 
-    optimization: {
-        minimizer: [
-          new UglifyJsPlugin({
-            cache: true,
-            parallel: true,
-            sourceMap: true 
-          }),
-        //   new OptimizeCSSAssetsPlugin()  // use OptimizeCSSAssetsPlugin
-        ]
-    },
-
-    externals: [nodeExternals({
-        whitelist: config.whitelist
-    })],
-
-    module: {
-        rules: [
-            { 
-                test: /\.(ts|js)x?$/,
-                exclude: /node_modules/,
-                use: {  
-                    loader: 'babel-loader'
-                }
-            },
-            {
-                test: /\.css$/, // 解析css
-                include: path.join(__dirname, 'src'), 
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader'
-                ]
-            },
-            {
-                test: /\.css$/, // 解析css
-                include: /node_modules/, 
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader'
-                ]
-            },
-            {
-                test: /\.less$/, // 解析less
-                include: path.join(__dirname, 'src'), 
-                use: [
-                    MiniCssExtractPlugin.loader,
-
-                    config.cssModules 
-                        ?  { 
-                            loader: 'css-loader', 
-                            options: { 
-                                modules: true,
-                                localIdentName: '[name]__[local]--[hash:base64:5]' 
-                            } 
-                        }
-                        : 'css-loader',
-
-                    'postcss-loader',
-                    'less-loader'
-                ]
-            },
-            {
-                test: /\.less$/, // 解析less
-                include: /node_modules/, 
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
-                    'less-loader'
-                ]
-            },
-            /*{
-                test: /\.scss$/, // 解析sass
-                include: path.join(__dirname, 'src'), 
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader'
-                ]
-            },*/
-            {
-                test: /\.(woff2|woff|eot|ttf|otf|svg)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                  limit: 10000,
-                  name: 'assets/fonts/[name].[hash:7].[ext]',
-                }
-            },
-            {
-                test: /\.(png|jpg|jpeg|gif)(\?.*)?$/,
-                use: [
-                  {
-                    loader: 'url-loader',
-                    options: {
-                      name: 'assets/images/[name].[hash:7].[ext]',
-                      limit: 20000 //把小于 20kb 的文件转成 Base64 的格式
-                    }
-                  }
-                ]
-            }
-        ]
-    },
-
-    resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
-    },
-
-    plugins: [
-        // 打包前先清空
-        // new CleanWebpackPlugin(),
-        new OptimizeCSSAssetsPlugin(),
-
-        new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
-            filename: "style/index.css",
-            chunkFilename: "[id].css"
-        }),
-        
-        // 复制插件
-        new CopyWebpackPlugin([
-            { 
-                from: path.join(__dirname,'src/component/index.less'), 
-                to:  path.join(__dirname, `lib/${moduleName}/style/index.less`) 
-            }
-        ]),
-        new CopyWebpackPlugin([
-            { 
-                from: path.join(__dirname,'src/component/import/'), 
-                to:  path.join(__dirname, `lib/${moduleName}/style/`) 
-            }
-        ])
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true 
+      }),
+    //  new OptimizeCSSAssetsPlugin()  // use OptimizeCSSAssetsPlugin
     ]
+  },
+
+  externals: [nodeExternals({
+    whitelist: config.whitelist
+  })],
+
+  module: {
+    rules: [
+      { 
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: {  
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.css$/, // 解析css
+        include: path.join(__dirname, 'src'), 
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+      {
+        test: /\.css$/, // 解析css
+        include: /node_modules/, 
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+      {
+        test: /\.less$/, // 解析less
+        include: path.join(__dirname, 'src'), 
+        use: [
+            MiniCssExtractPlugin.loader,
+
+            config.cssModules 
+              ?  { 
+                loader: 'css-loader', 
+                options: { 
+                  modules: true,
+                  localIdentName: '[name]__[local]--[hash:base64:5]' 
+                } 
+              }
+              : 'css-loader',
+
+            'postcss-loader',
+            'less-loader'
+        ]
+      },
+      {
+        test: /\.less$/, // 解析less
+        include: /node_modules/, 
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+          // {
+          //   loader: 'less-loader',
+          //   options: {
+          //       javascriptEnabled: true
+          //   }
+          // }
+        ]
+      },
+      /*{
+        test: /\.scss$/, // 解析sass
+        include: path.join(__dirname, 'src'), 
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },*/
+      {
+        test: /\.(woff2|woff|eot|ttf|otf|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'assets/fonts/[name].[hash:7].[ext]',
+        }
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: 'assets/images/[name].[hash:7].[ext]',
+              limit: 20000 //把小于 20kb 的文件转成 Base64 的格式
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
+  },
+
+  plugins: [
+    // 打包前先清空
+    // new CleanWebpackPlugin(),
+    new OptimizeCSSAssetsPlugin(),
+
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "style/index.css",
+      chunkFilename: "[id].css"
+    }),
+    
+    // 复制插件
+    new CopyWebpackPlugin([
+      { 
+        from: path.join(__dirname,'src/component/index.less'), 
+        to:  path.join(__dirname, `lib/${moduleName}/style/index.less`) 
+      }
+    ]),
+    new CopyWebpackPlugin([
+      { 
+        from: path.join(__dirname,'src/component/import/'), 
+        to:  path.join(__dirname, `lib/${moduleName}/style/`) 
+      }
+    ]),
+    // 再拷贝一份样式相关, 要不然引入样式的时候太深了
+    new CopyWebpackPlugin([
+      { 
+        from: path.join(__dirname, `lib/${moduleName}/style/`), 
+        to:  path.join(__dirname, `lib/`) 
+      }
+    ])
+  ]
 }
 

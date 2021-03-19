@@ -60,7 +60,13 @@ module.exports = {
         use: [ 
           'style-loader', 
           'css-loader',
-          'postcss-loader'
+          'postcss-loader',
+          {
+            loader: 'less-loader',
+            options: {
+                javascriptEnabled: true
+            }
+          }
         ] 
       }, /*{
         test: /\.scss$/, // 解析scss
