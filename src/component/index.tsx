@@ -8,7 +8,7 @@ interface IProps {
 
 export const TfXXX: FC<IProps> = () => {
   return(
-    <div className={styles.test}>
+    <div>
       xxxxxx
     </div>
   )
