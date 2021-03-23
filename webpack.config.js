@@ -41,13 +41,10 @@ module.exports = {
         use: [
           'style-loader', 
 
-          config.cssModules 
+          config.cssLoaderOptions 
             ?  { 
               loader: 'css-loader', 
-              options: { 
-                modules: true,
-                localIdentName: '[name]__[local]--[hash:base64:5]' 
-              } 
+              options: config.cssLoaderOptions
             }
             : 'css-loader',
 
