@@ -1,6 +1,6 @@
 {
   "name": "tf-lib-tpl",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "组件开发模板",
   "main": "./lib/tf-lib-tpl/index.min.js",
   "scripts": {
@@ -56,8 +56,8 @@
   "peerDependencies": {
     "@types/react": "^16.14.4",
     "@types/react-dom": "^16.9.11",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
   },
   "dependencies": {
     
